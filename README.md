@@ -10,5 +10,5 @@
 - open shell AS ADMIN!!! and navigate to C:
 - Run "python trim_serials.py"
 - Run "python machine_types.py"
-- output.txt is created with minimal metadata
+- output.txt is created in C:\ with minimal metadata
 - Total number of machines by type are listed at the end
