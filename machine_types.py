@@ -21,6 +21,10 @@ fourth = [x for x in third if any(y in x for y in to_keep)]
 
 #for as many uniqe models that exist in the list,
 #print which model they are and how many times each occurs (total number)
+#slapped together appending of models results to the end of output.txt
 for models in fourth:
     print(f'{models} {second.count(models)}')
+    with open(r"C:\output.txt", 'a') as last:
+        last.write("%s" % models + " " + str(second.count(models)) + "\n")
 
+print('Done')
