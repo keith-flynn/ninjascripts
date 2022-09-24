@@ -1,8 +1,10 @@
 # ninjascripts
 
 ## Automate specific work tasks
+## This is currently under revision for refactoring
 
 ### The basics
+- Ignore these as they no longer apply/are changing
 - Data is copied from 'PO Progress' of work site
 - Paste into a text file named 'input.txt'
 - Add input.txt to your C:\ directory

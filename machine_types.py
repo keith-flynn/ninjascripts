@@ -1,30 +1,18 @@
-#run as admin
+import pandas as pd
+import re
 
-#import text: File NEEDS to be named "input.txt" and saved to the C:\ directory
-with open(r"C:\input.txt", 'r') as f:
-    first = f.read()
+# import and save the SKU column from DT_export.csv
+# the csv is the default format of the Export 2.0 tool
+data = pd.read_csv('DT_export.csv', usecols=['SERIAL', 'SKU'])
 
-#split data into a list of separate strings
-second = first.split()
+# create a list of the unique models in receiving format
+models_scan = []
+for i in data.SKU:
+    if i not in models_scan:
+        models_scan.append(i)
 
-
-#create new list of ONLY unique strings...
-#this saves each serial, but also keeps a few stragglers such as PO, EID, timestamps, and machine types
-third = []
-for i in second:
-    if i not in third:
-        third.append(i)
-
-#keeps only list items with 'REC-'
-to_keep = ['REC-']
-fourth = [x for x in third if any(y in x for y in to_keep)]
-
-#for as many uniqe models that exist in the list,
-#print which model they are and how many times each occurs (total number)
-#slapped together appending of models results to the end of output.txt
-for models in fourth:
-    print(f'{models} {second.count(models)}')
-    with open(r"C:\output.txt", 'a') as last:
-        last.write("%s" % models + " " + str(second.count(models)) + "\n")
-
-print('Done')
+# iterate through models list removing receiving format
+# and add total count
+for elem in models_scan:
+    model = re.sub(r"REC-", "", elem)
+    print(model, data.SKU.value_counts()[elem])
