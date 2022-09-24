@@ -1,16 +1,18 @@
 # ninjascripts
 
 ## Automate specific work tasks
-## This is currently under revision for refactoring
-
+---
+##### Required packages
+##### - Pandas
+##### - Pyperclip
+---
 ### The basics
-- Ignore these as they no longer apply/are changing
-- Data is copied from 'PO Progress' of work site
-- Paste into a text file named 'input.txt'
-- Add input.txt to your C:\ directory
-- Add scripts to C: directory
-- open shell AS ADMIN!!! and navigate to C:
-- Run "python trim_serials.py"
-- Run "python machine_types.py"
-- output.txt is created in C:\ with minimal metadata
+- Data is copied from DT_export.csv
+- This is the default filename using the Export 2.0 tool
+- Work website export tool automatically downloads to browser default destination
+- Add scripts and CSV to same subdirectory
+- Run "trim_serials.py"
+- All serials are now copied to operating system clipboard
+- Paste in desired work website form
+- Run "machine_types.py"
 - Total number of machines by type are listed at the end

@@ -1,32 +1,19 @@
-#run as admin or abandon all hope
+import pandas as pd
+import pyperclip
 
-#import text: File NEEDS to be named "input.txt" and saved to the C:\ directory
-with open(r"C:\input.txt", 'r') as f:
-    first = f.read()
-    print(first)
+# import and save the SERIAL column from DT_export.csv
+# the csv is the default format of the Export 2.0 tool
+serial_scan = pd.read_csv('DT_export.csv', usecols=['SERIAL', 'SKU'])
 
-#split data into a list of separate strings
-second = first.split()
-print(second)
+# this printout is a visual failsafe to compare clipboard contents
+serials_col = list(serial_scan['SERIAL'])
+print(serials_col)
 
-#create new list of ONLY unique strings...
-#this saves each serial, but also keeps a few stragglers such as PO, EID, timestamps, and machine types
-third = []
-for i in second:
-    if i not in third:
-        third.append(i)
+# convert column contents to iterated string on new lines
+# this will be proper format to paste into work website form
+clipboard = ''
+for s in serial_scan.SERIAL:
+    clipboard = clipboard + s + '\n'
 
-print(third)
-
-#trim away machine type and timestamps
-to_remove = ['REC-', ':']
-fourth = [x for x in third if not any(y in x for y in to_remove)]
-
-#writes new text file with (mostly) only serials.
-#file will be created in the C:\ directory where input.txt was originally pulled
-#date/PO/EID at the beginning will still need trimmed as well as metadata at the end
-#paring these down with additional paramaters may affect integrity of longer/temporary serials
-with open(r"C:\output.txt", 'w') as last:
-    for e in fourth:
-        last.write("%s\n" % e)
-    print('Done')
+#copy clipboard variable to OS (system agnostic) clipboard
+pyperclip.copy(clipboard)
