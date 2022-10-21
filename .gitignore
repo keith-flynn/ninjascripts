@@ -1,0 +1,6 @@
+# ignore jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# ignore legacy files
+cost_cleaner.py
+ninjascript.py

@@ -1,10 +1,16 @@
 # ninjascripts
 
-## Automate specific work tasks
+## Automate very specific work tasks
 ---
-##### Required packages
-##### - Pandas
-##### - Pyperclip
+## Project Overview:
+
+**Code and Resources Used**
+ - Python 3.9
+   - _Pandas_
+   - _Matplotlib_
+   - _Easygui_
+   - _Pyperclip_
+ - From the command line, input `pip install -r requirements.txt` from within the project directory to add required modules.
 ---
 ### The basics
 - Data is copied from DT_export.csv
