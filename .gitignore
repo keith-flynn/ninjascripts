@@ -2,5 +2,4 @@
 .ipynb_checkpoints/
 
 # ignore legacy files
-cost_cleaner.py
-ninjascript.py
+DT_export.csv
